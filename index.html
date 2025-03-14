@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Сюрприз!</title>
+    <title>Экзамен</title>
     <style>
         body {
             background-color: black;
@@ -16,18 +16,48 @@
             height: auto;
             margin-top: 20px;
         }
+        #examImage, #examContent {
+            display: none;
+        }
+        button {
+            font-size: 20px;
+            padding: 10px;
+            margin-top: 20px;
+            background-color: red;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: darkred;
+        }
     </style>
     <script>
-        window.onload = function() {
-            let audio = new Audio('https://voca.ro/14ELIBLN7kkA'); // Обновленная музыка
+        let audio = new Audio('https://voca.ro/14ELIBLN7kkA');
+        function startExam() {
+            document.getElementById('title').innerText = '😈 ТЫ ПЛОХО ЗНАЕШЬ КОНСТИТУЦИОННОЕ ПРАВО, ВИЛЬДАН😈';
+            document.getElementById('startButton').style.display = 'none';
+            document.getElementById('initialImage').style.display = 'none';
+            document.getElementById('examContent').style.display = 'block';
+            playSound(); // Музыка начнет играть сразу после нажатия кнопки
+        }
+        function playSound() {
             audio.volume = 1.0;
             audio.play();
-        };
+        }
     </script>
 </head>
 <body>
-    <h1>😈 ТЫ ПЛОХО ЗНАЕШЬ КОНСТИТУЦИОННОЕ ПРАВО, ВИЛЬДАН😈</h1>
-    <p>ВЫ ВЫХОДИТЕ НА КОМИССИЮ....</p>
-    <img src="https://i.ibb.co/4ZYRMg38/photo.jpg" alt="Секретное изображение"> <!-- Замени на свою картинку -->
+    <h1 id="title">ЭКЗАМЕН ПО КОНСТИТУЦИОННОМУ ПРАВУ У АВДЕЕВА</h1>
+    <img id="initialImage" src="https://i.ibb.co/4ZYRMg38/photo.jpg" alt="Первая картинка">
+    <br>
+    <button id="startButton" onclick="startExam()">СДАТЬ КОНСТИТУЦИОННОЕ ПРАВО</button>
+    
+    <div id="examContent" style="display: none;">
+        <p>ВЫ ВЫХОДИТЕ НА КОМИССИЮ....</p>
+        <img id="examImage" src="https://i.ibb.co/4ZYRMg38/photo.jpg" alt="Секретное изображение">
+        <br>
+        <button onclick="playSound()">ПЕРЕСДАТЬ КОНСТИТУЦИОННОЕ ПРАВО</button>
+    </div>
 </body>
 </html>
